@@ -621,7 +621,7 @@ export default function Introduction() {
         </header>
 
         <div className="flex-1 flex flex-col justify-center max-w-3xl pointer-events-auto">
-          <h1
+          <p
             className="slide-title font-serif text-5xl md:text-7xl lg:text-8xl mb-6 italic font-light"
             id="mainTitle"
           />

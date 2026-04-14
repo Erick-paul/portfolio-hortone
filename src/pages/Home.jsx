@@ -681,11 +681,11 @@ const Home = ({ setView }) => {
         >
           <span>Software Engineer</span>
           <span>•</span>
-          <span>Web & mobile developmente</span>
+          <span>Web & mobile development</span>
           <span>•</span>
           <span>Software Engineer</span>
           <span>•</span>
-          <span>Web & mobile developmente</span>
+          <span>Web & mobile development</span>
           <span>•</span>
           <span>Software Engineer</span>
         </motion.div>
@@ -733,8 +733,6 @@ const Home = ({ setView }) => {
               that fuel both personal and professional growth.
             </motion.p>
           </div>
-
-       
         </div>
       </section>
 
