@@ -112,7 +112,7 @@ const ProjectItem = React.forwardRef(
             window.gsap.to(textRef.current, {
               duration: 0.6,
               scrambleText: {
-                text: project[key],
+                text: project[key] || "",
                 chars: "01X-/_",
                 revealDelay: 0.1,
                 speed: 0.5,
@@ -196,13 +196,17 @@ const MusicPortfolio = ({ PROJECTS_DATA = [], CONFIG = {} }) => {
 
     Promise.all([
       loadScript(
-        "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js",
       ),
-      loadScript("https://assets.codepen.io/16327/ScrambleTextPlugin3.min.js"),
+      loadScript(
+        "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrambleTextPlugin.min.js",
+      ),
     ]).then(() => {
-      if (window.gsap) {
+      if (window.gsap && window.ScrambleTextPlugin) {
         window.gsap.registerPlugin(window.ScrambleTextPlugin);
         setScriptsLoaded(true);
+      } else {
+        console.error("GSAP or ScrambleTextPlugin failed to load");
       }
     });
   }, []);

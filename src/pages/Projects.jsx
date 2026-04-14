@@ -1,7 +1,6 @@
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { createContext, useContext, useRef, useState } from "react";
 import { allProjects } from "../constants/data";
-import Footer from "../components/Footer";
 
 // --- CONTEXTS ---
 const CursorContext = createContext({
@@ -284,7 +283,7 @@ const Projects = ({ setView }) => {
           </motion.div>
         ))}
       </div>
-      <Footer setView={setView} />
+      {/* <Footer setView={setView} /> */}
     </section>
   );
 };

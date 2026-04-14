@@ -189,28 +189,26 @@ const MusicPortfolio = ({ PROJECTS_DATA = [], CONFIG = {} }) => {
   const projectItemsRef = useRef([]);
 
   // Load GSAP via CDN for single-file preview environment
-  useEffect(() => {
-    const loadScript = (src) => {
-      return new Promise((resolve) => {
-        const script = document.createElement("script");
-        script.src = src;
-        script.onload = resolve;
-        document.head.appendChild(script);
-      });
-    };
-
-    Promise.all([
-      loadScript(
-        "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js",
-      ),
-      loadScript("https://assets.codepen.io/16327/ScrambleTextPlugin3.min.js"),
-    ]).then(() => {
-      if (window.gsap) {
-        window.gsap.registerPlugin(window.ScrambleTextPlugin);
-        setScriptsLoaded(true);
-      }
+useEffect(() => {
+  const loadScript = (src) => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = resolve;
+      document.head.appendChild(script);
     });
-  }, []);
+  };
+
+  Promise.all([
+    loadScript("https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"),
+    loadScript("https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrambleTextPlugin.min.js"),
+  ]).then(() => {
+    if (window.gsap && window.ScrambleTextPlugin) {
+      window.gsap.registerPlugin(window.ScrambleTextPlugin);
+      setScriptsLoaded(true);
+    }
+  });
+}, []);
 
   const startIdleAnimation = useCallback(() => {
     if (idleAnimationRef.current || !window.gsap) return;
